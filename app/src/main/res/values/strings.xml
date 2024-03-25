@@ -13,4 +13,6 @@
     <string name="AlarmsCard">Alarms</string>
     <string name="SpeakerCard">Speaker</string>
     <string name="MotionDetectorCard">Motion Detector</string>
+    <string name="SetupTitle">Setup</string>
+    <string name="VolumeTitle">Volume</string>
 </resources>
