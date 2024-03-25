@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Home_Security_System_App</string>
+    <string name="security">Security</string>
+    <string name="Logo">Logo</string>
 </resources>
