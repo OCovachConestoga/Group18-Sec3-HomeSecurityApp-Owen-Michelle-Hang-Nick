@@ -23,7 +23,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/security"
             android:textColor="@color/lavender"
-            android:textSize="40sp"
+            android:textSize="36sp"
             app:layout_constraintEnd_toStartOf="@+id/securityImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
