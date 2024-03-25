@@ -2,4 +2,15 @@
     <string name="app_name">Home_Security_System_App</string>
     <string name="security">Security</string>
     <string name="Logo">Logo</string>
+    <string name="camera">Camera</string>
+    <string name="speaker">Speaker</string>
+    <string name="doorLocks">Door Locks</string>
+    <string name="motionDetector">Motion Detector</string>
+    <string name="CameraCard">Camera</string>
+    <string name="LightCard">Light</string>
+    <string name="DoorLocksCard">Door Locks</string>
+    <string name="KeyCard">Key</string>
+    <string name="AlarmsCard">Alarms</string>
+    <string name="SpeakerCard">Speaker</string>
+    <string name="MotionDetectorCard">Motion Detector</string>
 </resources>
