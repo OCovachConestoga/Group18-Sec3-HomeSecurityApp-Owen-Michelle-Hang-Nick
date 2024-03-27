@@ -15,4 +15,9 @@
     <string name="MotionDetectorCard">Motion Detector</string>
     <string name="SetupTitle">Setup</string>
     <string name="VolumeTitle">Volume</string>
+    <string name="door_locks">Door Locks</string>
+    <string name="start_doorlocks">Start DoorLocks</string>
+    <string name="stop_doorlocks">Stop DoorLocks</string>
+    <string name="no_doorlocks_setup">No DoorLocks Setup</string>
+    <string name="doorlocks_setup">DoorLocks Setup!</string>
 </resources>
