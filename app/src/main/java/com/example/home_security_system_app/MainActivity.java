@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     CardView cameraCard;
+    CardView lightCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView((R.layout.activity_main));
 
         cameraCard = findViewById(R.id.cameraCard);
+        lightCard = findViewById(R.id.lightCard);
 
         cameraCard.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -29,5 +31,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        lightCard.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LightActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
 }
