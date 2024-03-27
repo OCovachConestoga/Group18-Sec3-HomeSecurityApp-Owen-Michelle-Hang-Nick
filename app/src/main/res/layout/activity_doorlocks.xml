@@ -66,7 +66,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/no_doorlocks_setup"
         android:textAlignment="center"
-        android:textSize="60sp"
+        android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@id/lockDoorsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="wrap"
