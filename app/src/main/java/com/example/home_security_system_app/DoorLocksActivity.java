@@ -1,19 +1,9 @@
 package com.example.home_security_system_app;
 
-import static android.Manifest.permission.CAMERA;
-
-import android.annotation.SuppressLint;
-import android.content.pm.PackageManager;
-import android.hardware.camera2.CameraManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 public class DoorLocksActivity extends AppCompatActivity {
 
@@ -25,6 +15,8 @@ public class DoorLocksActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_doorlocks);
 
+        doorLockDisplay = findViewById(R.id.doorLocksView);
+        doorLockDisplay.setText("No DoorLocks Setup /o\\");
     }
 
     public void buttonSetup(View view){

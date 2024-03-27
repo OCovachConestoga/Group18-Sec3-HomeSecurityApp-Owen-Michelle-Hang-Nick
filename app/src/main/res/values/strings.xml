@@ -20,4 +20,9 @@
     <string name="stop_doorlocks">Stop DoorLocks</string>
     <string name="no_doorlocks_setup">No DoorLocks Setup</string>
     <string name="doorlocks_setup">DoorLocks Setup!</string>
+    <string name="motion_detector">Motion Detector</string>
+    <string name="motiondetectorcard">motionDetectorCard</string>
+    <string name="no_motion_detector_setup">No Motion Detector Setup</string>
+    <string name="start_detecting">Start Detecting</string>
+    <string name="stop_detecting">Stop Detecting</string>
 </resources>
