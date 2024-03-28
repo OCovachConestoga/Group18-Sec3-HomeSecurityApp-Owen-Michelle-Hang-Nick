@@ -1,62 +1,63 @@
 package com.example.home_security_system_app;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+// This class handles the Android studio GUI interactions and bridges to the command design pattern
 public class DoorLocksActivity extends AppCompatActivity {
 
-    private TextView doorLockDisplay;
-    private Button tempSetupButton;
-    private boolean isSetup = false;
+    // Create variable that are used by this class
+    private DoorLocksOnCommand dlCMD;
 
+    // Function that handles loading the view
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Switches the view on the app to the proper view
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_doorlocks);
 
-        doorLockDisplay = findViewById(R.id.doorLocksView);
+        // Creates a local TextView to pass to the DoorLocks object
+        TextView doorLockDisplay = findViewById(R.id.doorLocksView);
         doorLockDisplay.setText("No DoorLocks Setup /o\\");
+
+        // Make the text input invisible
+        EditText pinText = findViewById(R.id.setLockPinText);
+        pinText.setVisibility(View.INVISIBLE);
+
+        // Create the necessary instances of the system for the command design pattern
+        DoorLocks dl = new DoorLocks(doorLockDisplay, pinText);
+        dlCMD = new DoorLocksOnCommand(dl);
     }
 
+    // Handles the setup button click
     public void buttonSetup(View view){
-
-        tempSetupButton = findViewById(R.id.setupButton);
-        doorLockDisplay = findViewById(R.id.doorLocksView);
-
-        String btnText = tempSetupButton.getText().toString();
-
-        if(btnText.equals("Setup"))
-        {
-            tempSetupButton.setText("Disconnect");
-            doorLockDisplay.setText("DoorLocks Setup \\o/");
-        }
-        else
-        {
-            tempSetupButton.setText("Setup");
-            doorLockDisplay.setText("DoorLocks Disconnected \\o/");
-        }
-
-        isSetup = !isSetup;
+        // Run the door locks command execute function
+        dlCMD.executeSetup(view);
     }
 
+    // Handles the setLockPin button click
+    public void buttonSetLockPin(View view){
+
+        // Run the door locks extra function
+        dlCMD.setLockPin(view);
+    }
+
+    // Handles the lock doors button click
     public void buttonLockDoors(View view){
 
-        doorLockDisplay = findViewById(R.id.doorLocksView);
-        if(isSetup)
-            doorLockDisplay.setText("DoorLocks Locked \\o/");
-        else
-            doorLockDisplay.setText("No DoorLocks to Lock /o\\");
+        // Run the door locks command execute function
+        dlCMD.executeOn(view);
     }
 
+    // Handles the unlock doors button click
     public void buttonUnlockDoors(View view){
-        doorLockDisplay = findViewById(R.id.doorLocksView);
-        if(isSetup)
-            doorLockDisplay.setText("DoorLocks Unlocked \\o/");
-        else
-            doorLockDisplay.setText("No DoorLocks to Unlock /o\\");
+
+        // Run the door locks command execute function
+        dlCMD.executeOff(view);
     }
 }

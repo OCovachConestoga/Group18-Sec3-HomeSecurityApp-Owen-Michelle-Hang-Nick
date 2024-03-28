@@ -25,7 +25,13 @@
             android:name=".DoorLocksActivity"
             android:exported="false" />
         <activity
+            android:name=".DoorLocks"
+            android:exported="false" />
+        <activity
             android:name=".MotionDetectorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MotionDetector"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
