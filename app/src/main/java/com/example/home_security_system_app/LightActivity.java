@@ -1,5 +1,5 @@
 package com.example.home_security_system_app;
-
+// imports
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
