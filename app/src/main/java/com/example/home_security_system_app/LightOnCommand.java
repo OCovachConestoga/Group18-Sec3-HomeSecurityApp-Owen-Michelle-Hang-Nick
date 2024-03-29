@@ -44,8 +44,3 @@ public class LightOnCommand implements Command{
         li.setTimer(view);
     }
 }
-
-
-
-
-

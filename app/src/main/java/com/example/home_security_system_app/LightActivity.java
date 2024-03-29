@@ -37,7 +37,7 @@ public class LightActivity extends AppCompatActivity {
 
 
     // Handles the setup button click
-    public void setupButton(View view) {
+    public void setupLightButton(View view) {
 
         // Run the door locks command execute function
         liCMD.executeSetup(view);

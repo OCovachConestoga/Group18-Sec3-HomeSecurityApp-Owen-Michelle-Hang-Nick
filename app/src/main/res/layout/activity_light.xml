@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@id/lightTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/setupTimerButton">
+        app:layout_constraintBottom_toTopOf="@id/setupButton">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/setupTimerButton"
+        android:id="@+id/setupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="wrap"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/setupTimerButton"
+        app:layout_constraintTop_toBottomOf="@id/setupButton"
         app:layout_constraintWidth_default="wrap" />
 
 
