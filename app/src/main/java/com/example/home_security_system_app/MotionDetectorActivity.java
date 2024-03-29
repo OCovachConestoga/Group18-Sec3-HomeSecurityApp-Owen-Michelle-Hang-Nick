@@ -1,65 +1,54 @@
 package com.example.home_security_system_app;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+// This class handles the Android studio GUI interactions and bridges to the command design pattern
 public class MotionDetectorActivity extends AppCompatActivity {
 
-    private TextView motionDetectorDisplay;
-    private Button tempSetupButton;
+    // Create variable that are used by this class
+    private MotionDetectorOnCommand mdCMD;
 
-    private boolean isSetup = false;
-
+    // Function that handles loading the view
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Switches the view on the app to the proper view
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_motiondetector);
 
-        motionDetectorDisplay = findViewById(R.id.motionDetectorView);
+        // Creates a local TextView to pass to the MotionDetector object
+        TextView motionDetectorDisplay = findViewById(R.id.motionDetectorView);
         motionDetectorDisplay.setText("No Motion Detector Setup /o\\");
+
+        // Create the necessary instances of the system for the command design pattern
+        MotionDetector md = new MotionDetector(motionDetectorDisplay);
+        mdCMD = new MotionDetectorOnCommand(md);
     }
 
-    public void buttonSetup(View view){
-        tempSetupButton = findViewById(R.id.setupButton);
-        motionDetectorDisplay = findViewById(R.id.motionDetectorView);
-
-        String btnText = tempSetupButton.getText().toString();
-
-        if(btnText.equals("Setup"))
-        {
-            tempSetupButton.setText("Disconnect");
-            motionDetectorDisplay.setText("Motion Detector Setup \\o/");
-        }
-        else
-        {
-            tempSetupButton.setText("Setup");
-            motionDetectorDisplay.setText("Motion Detector Disconnected \\o/");
-        }
-
-        isSetup = !isSetup;
+    // Handles the setup button click
+    public void setupButton(View view) {
+        
+        // Run the door locks command execute function
+        mdCMD.executeSetup(view);
     }
 
+    // Handles the lock doors button click
     public void buttonStartDetecting(View view){
-        motionDetectorDisplay = findViewById(R.id.motionDetectorView);
 
-        if(isSetup)
-            motionDetectorDisplay.setText("Started Detecting \\o/");
-        else
-            motionDetectorDisplay.setText("No Motion Detector to Start /o\\");
+        // Run the door locks command execute function
+        mdCMD.executeOn(view);
     }
 
+    // Handles the unlock doors button click
     public void buttonStopDetecting(View view){
-        motionDetectorDisplay = findViewById(R.id.motionDetectorView);
 
-        if(isSetup)
-            motionDetectorDisplay.setText("Stopped Detecting \\o/");
-        else
-            motionDetectorDisplay.setText("No Motion Detector to Stop /o\\");
+        // Run the door locks command execute function
+        mdCMD.executeOff(view);
     }
 
 }

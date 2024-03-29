@@ -59,11 +59,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doorLocksCard" />
 
+    <Button
+        android:id="@+id/setLockPinButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="buttonSetLockPin"
+        android:text="@string/set_lock_pin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setupButton" />
+
     <TextView
         android:id="@+id/doorLocksView"
         android:layout_width="315dp"
         android:layout_height="270dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:text="@string/no_doorlocks_setup"
         android:textAlignment="center"
         android:textSize="45sp"
@@ -71,8 +82,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="wrap"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/setupButton"
+        app:layout_constraintTop_toBottomOf="@id/setLockPinButton"
         app:layout_constraintWidth_default="wrap"
+        />
+    <EditText
+        android:id="@+id/setLockPinText"
+        android:inputType="text"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/setLockPinButton"
+        app:layout_constraintBottom_toTopOf="@id/lockDoorsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_default="wrap"
+        android:autofillHints="password"
+        tools:ignore="LabelFor"
         />
 
     <Button
