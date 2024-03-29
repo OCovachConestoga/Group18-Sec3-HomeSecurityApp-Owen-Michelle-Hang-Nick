@@ -12,11 +12,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 // this class connects the GUI to the command pattern
 public class LightActivity extends AppCompatActivity {
 
     // variable used by LightActivity class
     private LightOnCommand liCMD;
+
+    // Firebase Database reference
+    private DatabaseReference myDatabase;
 
     // this function handles loading the view
     @SuppressLint("SetTextI18n")
@@ -25,6 +31,9 @@ public class LightActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_light);
+
+        // Initialize Firebase DB
+        myDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Creates a local TextView to pass to the Light object (for the timer)
         TextView lightDisplay = findViewById(R.id.lightTimerView);
@@ -48,6 +57,8 @@ public class LightActivity extends AppCompatActivity {
 
         // Run the door locks command execute function
         liCMD.executeOn(view);
+
+        myDatabase.child("LED_State").setValue("ON");
     }
 
     // Handles the light off button click
@@ -55,18 +66,11 @@ public class LightActivity extends AppCompatActivity {
 
         // Run the light off execute function
         liCMD.executeOff(view);
+
+        myDatabase.child("LED_State").setValue("OFF");
     }
 
 
-
-
-
-
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });*/
 
 }
 
