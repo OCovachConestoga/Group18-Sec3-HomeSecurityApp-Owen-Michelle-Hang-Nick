@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,9 @@ public class LightActivity extends AppCompatActivity {
 
     // Firebase Database reference
     private DatabaseReference myDatabase;
+
+    // Check setup status
+    private boolean isSetupDone = false;
 
     // this function handles loading the view
     @SuppressLint("SetTextI18n")
@@ -46,28 +50,44 @@ public class LightActivity extends AppCompatActivity {
 
 
     // Handles the setup button click
-    public void setupLightButton(View view) {
+    public void setupButton(View view) {
 
         // Run the door locks command execute function
         liCMD.executeSetup(view);
+
+        isSetupDone = true;
     }
 
     // Handles the light on  button click
     public void buttonOnLight(View view){
 
-        // Run the door locks command execute function
-        liCMD.executeOn(view);
+        if(isSetupDone)
+        {
+            // Run the door locks command execute function
+            liCMD.executeOn(view);
 
-        myDatabase.child("LED_State").setValue("ON");
+            myDatabase.child("LED_State").setValue("ON");
+        } else {
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // Handles the light off button click
     public void buttonOffLight(View view){
 
-        // Run the light off execute function
-        liCMD.executeOff(view);
+        if(isSetupDone)
+        {
+            // Run the light off execute function
+            liCMD.executeOff(view);
 
-        myDatabase.child("LED_State").setValue("OFF");
+            myDatabase.child("LED_State").setValue("OFF");
+        } else
+        {
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
 

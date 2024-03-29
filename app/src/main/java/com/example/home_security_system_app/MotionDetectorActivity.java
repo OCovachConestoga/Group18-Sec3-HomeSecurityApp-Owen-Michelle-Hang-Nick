@@ -60,7 +60,6 @@ public class MotionDetectorActivity extends AppCompatActivity {
         mdCMD.executeSetup(view);
 
         isSetupDone = true;
-
     }
 
     // Handles the lock doors button click

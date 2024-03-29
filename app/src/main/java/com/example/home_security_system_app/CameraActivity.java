@@ -1,5 +1,7 @@
 package com.example.home_security_system_app;
 
+import static android.Manifest.permission_group.CAMERA;
+
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -15,91 +17,78 @@ import android.os.Bundle;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
-
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
-import static android.Manifest.permission.CAMERA;
-
+import androidx.core.content.ContextCompat;
 import java.util.Collections;
-
 
 // https://www.youtube.com/watch?v=bEhqGpI0kew&t=377s
 public class CameraActivity extends AppCompatActivity {
 
+    private static final int REQUEST_CAMERA_PERMISSION = 200;
+
+    private CameraOnCommand camCMD;
     private TextureView textureView;
-    private CameraCaptureSession myCameraCaptureSession;
+    private TextView cameraStatus;
     private CameraManager cameraManager;
     private CameraDevice myCameraDevice;
+    private CameraCaptureSession myCameraCaptureSession;
     private CaptureRequest.Builder captureRequestBuilder;
-
+    private boolean isSetupDone = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_camera);
 
-        ActivityCompat.requestPermissions(this,
-                new String[]{CAMERA},
-                PackageManager.PERMISSION_GRANTED);
-
         textureView = findViewById(R.id.cameraFeedView);
-
+        cameraStatus = findViewById(R.id.cameraStatus);
         cameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
 
-        startCamera();
+        Camera cam = new Camera(cameraStatus);
+        camCMD = new CameraOnCommand(cam);
     }
 
-    private final CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
-        @Override
-        public void onOpened(@NonNull CameraDevice cameraDevice) {
-            myCameraDevice = cameraDevice;
+    public void setupButton(View view) {
+        if (ContextCompat.checkSelfPermission(this, CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, REQUEST_CAMERA_PERMISSION);
+        } else {
+
+            camCMD.executeSetup(view);
+            isSetupDone = true;
         }
+    }
 
-        @Override
-        public void onDisconnected(@NonNull CameraDevice cameraDevice) {
-            myCameraDevice.close();
-        }
-
-        @Override
-        public void onError(@NonNull CameraDevice cameraDevice, int i) {
-            myCameraDevice.close();
-            myCameraDevice = null;
-        }
-    };
-
-    private void startCamera() {
-        try {
-            String stringCameraID = cameraManager.getCameraIdList()[1];
-
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
+    // https://clouddevs.com/android/camera-api/
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CAMERA_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                View view = findViewById(R.id.setupButton);
+                camCMD.executeSetup(view);
+                isSetupDone = true;
+            } else {
+                cameraStatus.setText("Please allow your permission!");
             }
-            cameraManager.openCamera(stringCameraID, stateCallback, null);
-        } catch (CameraAccessException e) {
-            throw new RuntimeException(e);
         }
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
-    public void buttonStartCamera(View view)
-    {
+    public void buttonStartCamera(View view) {
+        if (!isSetupDone) {
+            cameraStatus.setText("Please setup camera first.");
+            return;
+        }
+
         SurfaceTexture surfaceTexture = textureView.getSurfaceTexture();
         Surface surface = new Surface(surfaceTexture);
 
         try {
+            camCMD.executeOn(view);
             captureRequestBuilder = myCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
             captureRequestBuilder.addTarget(surface);
             OutputConfiguration outputConfiguration = new OutputConfiguration(surface);
@@ -137,13 +126,12 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
-    public void buttonStopCamera(View view)
-    {
+    public void buttonStopCamera(View view) {
         try {
+            camCMD.executeOff(view);
             myCameraCaptureSession.abortCaptures();
-        } catch (CameraAccessException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            cameraStatus.setText("Failed to stop camera:");
         }
     }
-
 }
