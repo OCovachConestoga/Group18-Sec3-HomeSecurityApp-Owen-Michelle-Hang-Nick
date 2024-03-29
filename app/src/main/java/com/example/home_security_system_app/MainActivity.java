@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
     CardView cameraCard;
     CardView doorLocksCard;
     CardView motionDetectorCard;
-
     CardView lightCard;
 
     @Override
@@ -23,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         cameraCard = findViewById(R.id.cameraCard);
         doorLocksCard = findViewById(R.id.doorLocksCard);
         motionDetectorCard = findViewById(R.id.motionDetectorCard);
+        lightCard = findViewById(R.id.lightCard);
 
         cameraCard.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         lightCard.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MotionDetectorActivity.class);
+                Intent intent = new Intent(MainActivity.this, LightActivity.class);
                 startActivity(intent);
             }
         });
