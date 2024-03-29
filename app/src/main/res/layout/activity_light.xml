@@ -89,7 +89,7 @@
         android:id="@+id/onLightButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="ButtonOnLight"
+        android:onClick="buttonOnLight"
         android:text="Turn Light On"
         app:layout_constraintTop_toBottomOf="@id/lightTimerView"
         app:layout_constraintStart_toStartOf="parent"

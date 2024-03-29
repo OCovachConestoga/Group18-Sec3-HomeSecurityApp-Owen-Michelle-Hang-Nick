@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     CardView doorLocksCard;
     CardView motionDetectorCard;
 
+    CardView lightCard;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,5 +47,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        lightCard.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MotionDetectorActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
