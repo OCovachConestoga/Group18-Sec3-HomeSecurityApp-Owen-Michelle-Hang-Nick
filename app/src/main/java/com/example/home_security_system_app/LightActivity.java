@@ -8,7 +8,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+// this class connects the GUI to the command pattern
 public class LightActivity extends AppCompatActivity {
+
+    // variable used by LightActivity class
+    private LightOnCommand lCMD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

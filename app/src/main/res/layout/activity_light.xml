@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LightActivity">
-
+<!-- with help from https://youtu.be/GgtmJSHMeLA?si=U4r6pZ1djA35uRz2   -->
     <TextView
         android:id="@+id/lightTitle"
         android:layout_width="wrap_content"
@@ -73,6 +73,10 @@
         android:layout_width="415dp"
         android:layout_height="328dp"
         android:layout_marginTop="8dp"
+        android:text="Timer Not Set Up"
+        android:textAlignment="center"
+        android:textColor="@color/lavender"
+        android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@id/onLightButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="wrap"
