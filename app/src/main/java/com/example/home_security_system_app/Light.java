@@ -52,7 +52,7 @@ public class Light{
         isSetup = !isSetup;
     }
 
-    // Function to simulate turning on the light
+    // Function to simulate turning on the light class
     @SuppressLint("SetTextI18n")
     public void on(){ // on was start
 
