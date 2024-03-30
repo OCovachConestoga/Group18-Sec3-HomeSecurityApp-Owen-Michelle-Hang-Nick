@@ -39,12 +39,12 @@ public class Light{
 
         if(btnText.equals("Setup"))
         {
-            myDatabase.child("LED_State").setValue("OFF");
             tempSetupButton.setText("Disconnect");
             lightDisplay.setText("Light Set Up \\o/");
         }
         else
         {
+            myDatabase.child("LED_State").setValue("OFF");
             tempSetupButton.setText("Setup");
             lightDisplay.setText("Light Disconnected \\o/");
         }
