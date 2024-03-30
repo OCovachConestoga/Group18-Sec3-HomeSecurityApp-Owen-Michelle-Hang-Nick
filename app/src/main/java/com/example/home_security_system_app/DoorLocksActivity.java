@@ -30,7 +30,7 @@ public class DoorLocksActivity extends AppCompatActivity {
         pinText.setVisibility(View.INVISIBLE);
 
         // Create the necessary instances of the system for the command design pattern
-        DoorLocks dl = new DoorLocks(doorLockDisplay, pinText);
+        DoorLocks dl = new DoorLocks(doorLockDisplay, pinText, this);
         dlCMD = new DoorLocksOnCommand(dl);
     }
 

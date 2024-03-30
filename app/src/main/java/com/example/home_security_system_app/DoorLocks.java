@@ -1,10 +1,12 @@
 package com.example.home_security_system_app;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 // Class that defines the DoorLocks system
 public class DoorLocks{
@@ -12,12 +14,14 @@ public class DoorLocks{
     // Create variable that are used by this class
     private final TextView doorLockDisplay;
     private final EditText pinText;
+    private final Context context;
     private boolean isSetup = false; // default to false when first loading up
 
     //Parameterized Constructor
-    DoorLocks(TextView textView, EditText editText){
+    DoorLocks(TextView textView, EditText editText, Context context){
         doorLockDisplay = textView;
         pinText = editText;
+        this.context = context;
     }
 
     // Function to simulate setting up doorlocks
@@ -85,7 +89,12 @@ public class DoorLocks{
         if(isSetup)
             doorLockDisplay.setText("DoorLocks Locked \\o/");
         else
+        {
             doorLockDisplay.setText("No DoorLocks to Lock /o\\");
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     // Function to simulate Unlocking Doors
@@ -96,6 +105,11 @@ public class DoorLocks{
         if(isSetup)
             doorLockDisplay.setText("DoorLocks Unlocked \\o/");
         else
+        {
             doorLockDisplay.setText("No DoorLocks to Unlock /o\\");
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
