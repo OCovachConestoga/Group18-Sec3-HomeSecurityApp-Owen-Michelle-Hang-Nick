@@ -18,7 +18,6 @@ public class CameraActivity extends AppCompatActivity {
 
 
     private CameraOnCommand camCMD;
-    private TextView cameraStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class CameraActivity extends AppCompatActivity {
                 PackageManager.PERMISSION_GRANTED);
 
         TextureView cameraDisplay = findViewById(R.id.cameraFeedView);
-        cameraStatus = findViewById(R.id.cameraStatus);
+        TextView cameraStatus = findViewById(R.id.cameraStatus);
         CameraManager cameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
 
         Camera cam = new Camera(cameraStatus, cameraDisplay, cameraManager, this);

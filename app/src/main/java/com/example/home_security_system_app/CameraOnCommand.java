@@ -1,6 +1,9 @@
 package com.example.home_security_system_app;
 
+import android.os.Build;
 import android.view.View;
+
+import androidx.annotation.RequiresApi;
 
 // Concrete Command Class that implements the commands for the Camera
 public class CameraOnCommand implements Command{
@@ -22,6 +25,7 @@ public class CameraOnCommand implements Command{
     }
 
     // Implementation of on execution
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public void executeOn(View view){
 

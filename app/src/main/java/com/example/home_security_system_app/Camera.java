@@ -19,6 +19,7 @@ import android.hardware.camera2.CaptureRequest;
 import android.view.Surface;
 import android.hardware.camera2.params.OutputConfiguration;
 import android.hardware.camera2.params.SessionConfiguration;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -39,7 +40,7 @@ public class Camera{
 
     private CameraDevice myCameraDevice;
 
-    private CameraManager cameraManager;
+    private final CameraManager cameraManager;
 
     private CameraCaptureSession myCameraCaptureSession;
 
@@ -90,7 +91,11 @@ public class Camera{
             createCameraPreview();
         }
         else
+        {
             CameraStatus.setText("No Camera to Turn On /o\\");
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // Function to simulate turning off the Camera
@@ -104,7 +109,11 @@ public class Camera{
             StopCamera();
         }
         else
+        {
             CameraStatus.setText("No Camera to turn off /o\\");
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
