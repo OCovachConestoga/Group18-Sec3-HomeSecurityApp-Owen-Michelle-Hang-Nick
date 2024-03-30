@@ -56,7 +56,7 @@ public class Alarms {
 
     // Function to simulate Turning Alarms On
     @SuppressLint("SetTextI18n")
-    public void turnon(View view){
+    public void turnon(){
         // Checks if the system is setup or not
         if(isSetup)
         {
@@ -75,7 +75,7 @@ public class Alarms {
 
     // Function to simulate Turning Alarms Off
     @SuppressLint("SetTextI18n")
-    public void turnoff(View view){
+    public void turnoff(){
         // Checks if the system is setup or not
         if(isSetup)
         {

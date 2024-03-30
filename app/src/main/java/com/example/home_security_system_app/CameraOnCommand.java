@@ -27,18 +27,18 @@ public class CameraOnCommand implements Command{
     // Implementation of on execution
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
-    public void executeOn(View view){
+    public void executeOn(){
 
         // Runs the Camera start function
-        cam.on(view);
+        cam.on();
     }
 
     // Implementation of off execution
     @Override
-    public void executeOff(View view){
+    public void executeOff(){
 
         // Runs the  stop function
-        cam.off(view);
+        cam.off();
     }
 
 }

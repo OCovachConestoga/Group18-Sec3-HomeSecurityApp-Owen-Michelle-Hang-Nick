@@ -54,7 +54,7 @@ public class Light{
 
     // Function to simulate turning on the light
     @SuppressLint("SetTextI18n")
-    public void on(View view){ // on was start
+    public void on(){ // on was start
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -73,7 +73,7 @@ public class Light{
 
     // Function to simulate turning off the light
     @SuppressLint("SetTextI18n")
-    public void off(View view){ // was stop now off
+    public void off(){ // was stop now off
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -91,7 +91,7 @@ public class Light{
 
     // Function to simulate setting up the light timer
     @SuppressLint("SetTextI18n")
-    public void setTimer(View view){
+    public void setTimer(){
 
         // Checks if the system is setup or not
         if(isSetup) {

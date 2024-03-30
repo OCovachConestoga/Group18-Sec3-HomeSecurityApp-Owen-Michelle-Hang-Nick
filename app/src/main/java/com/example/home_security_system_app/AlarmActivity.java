@@ -44,13 +44,13 @@ public class AlarmActivity extends AppCompatActivity {
     public void buttonStartAlarm(View view){
 
         // Run the door locks command execute function
-        almCMD.executeOn(view);
+        almCMD.executeOn();
     }
 
     // Handles the unlock doors button click
     public void buttonStopAlarm(View view){
 
         // Run the door locks command execute function
-        almCMD.executeOff(view);
+        almCMD.executeOff();
     }
 }

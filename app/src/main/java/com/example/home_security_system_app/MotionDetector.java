@@ -62,7 +62,7 @@ public class MotionDetector{
 
     // Function to simulate starting the motion detection
     @SuppressLint("SetTextI18n")
-    public void start(View view){
+    public void start(){
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -83,7 +83,7 @@ public class MotionDetector{
 
     // Function to simulate stopping the motion detection
     @SuppressLint("SetTextI18n")
-    public void stop(View view){
+    public void stop(){
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -101,7 +101,7 @@ public class MotionDetector{
     }
 
 
-
+    @SuppressLint("SetTextI18n")
     private void motionStateListener()
     {
 

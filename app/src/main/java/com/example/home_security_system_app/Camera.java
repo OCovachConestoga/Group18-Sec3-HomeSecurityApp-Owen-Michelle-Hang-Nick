@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CameraMetadata;
 import android.hardware.camera2.CaptureRequest;
@@ -82,7 +81,7 @@ public class Camera{
     // Function to simulate turning on the Camera
     @RequiresApi(api = Build.VERSION_CODES.P)
     @SuppressLint("SetTextI18n")
-    public void on(View view){ // on was start
+    public void on(){ // on was start
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -100,7 +99,7 @@ public class Camera{
 
     // Function to simulate turning off the Camera
     @SuppressLint("SetTextI18n")
-    public void off(View view){ // was stop now off
+    public void off(){ // was stop now off
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -140,7 +139,7 @@ public class Camera{
 
     private void startCamera() {
         try {
-            String stringCameraID = cameraManager.getCameraIdList()[1];
+            String stringCameraID = cameraManager.getCameraIdList()[0];
 
             if (ActivityCompat.checkSelfPermission(this.context, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling

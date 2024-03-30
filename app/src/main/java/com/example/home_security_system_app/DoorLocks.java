@@ -57,7 +57,7 @@ public class DoorLocks{
 
     // Function to simulate the setup of a lock pin
     @SuppressLint("SetTextI18n")
-    public void setLockPin(View view) {
+    public void setLockPin() {
 
         // checks if the DoorLock is setup
         if(isSetup)
@@ -88,7 +88,7 @@ public class DoorLocks{
 
     // Function to simulate Locking doors
     @SuppressLint("SetTextI18n")
-    public void lock(View view){
+    public void lock(){
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -108,7 +108,7 @@ public class DoorLocks{
 
     // Function to simulate Unlocking Doors
     @SuppressLint("SetTextI18n")
-    public void unlock(View view){
+    public void unlock(){
 
         // Checks if the system is setup or not
         if(isSetup)

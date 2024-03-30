@@ -51,20 +51,20 @@ public class DoorLocksActivity extends AppCompatActivity {
     public void buttonSetLockPin(View view){
 
         // Run the door locks extra function
-        dlCMD.setLockPin(view);
+        dlCMD.setLockPin();
     }
 
     // Handles the lock doors button click
     public void buttonLockDoors(View view){
 
         // Run the door locks command execute function
-        dlCMD.executeOn(view);
+        dlCMD.executeOn();
     }
 
     // Handles the unlock doors button click
     public void buttonUnlockDoors(View view){
 
         // Run the door locks command execute function
-        dlCMD.executeOff(view);
+        dlCMD.executeOff();
     }
 }

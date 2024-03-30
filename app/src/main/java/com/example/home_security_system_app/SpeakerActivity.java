@@ -45,13 +45,13 @@ public class SpeakerActivity extends AppCompatActivity {
     public void buttonStartSpeaker(View view){
 
         // Run the door locks command execute function
-        spkCMD.executeOn(view);
+        spkCMD.executeOn();
     }
 
     // Handles the unlock doors button click
     public void buttonStopSpeaker(View view){
 
         // Run the door locks command execute function
-        spkCMD.executeOff(view);
+        spkCMD.executeOff();
     }
 }

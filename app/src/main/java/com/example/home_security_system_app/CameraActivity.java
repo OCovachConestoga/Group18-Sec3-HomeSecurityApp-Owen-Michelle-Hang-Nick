@@ -44,10 +44,10 @@ public class CameraActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     public void buttonStartCamera(View view) {
-        camCMD.executeOn(view);
+        camCMD.executeOn();
     }
 
     public void buttonStopCamera(View view) {
-        camCMD.executeOff(view);
+        camCMD.executeOff();
     }
 }

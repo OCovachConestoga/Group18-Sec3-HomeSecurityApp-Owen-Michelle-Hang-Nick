@@ -3,16 +3,9 @@ package com.example.home_security_system_app;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,9 +14,6 @@ public class LightActivity extends AppCompatActivity {
 
     // variable used by LightActivity class
     private LightOnCommand liCMD;
-
-    // Firebase Database reference
-    private DatabaseReference myDatabase;
 
     // this function handles loading the view
     @SuppressLint("SetTextI18n")
@@ -34,7 +24,8 @@ public class LightActivity extends AppCompatActivity {
         setContentView(R.layout.activity_light);
 
         // Initialize Firebase DB
-        myDatabase = FirebaseDatabase.getInstance().getReference();
+        // Firebase Database reference
+        DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Creates a local TextView to pass to the Light object (for the timer)
         TextView lightDisplay = findViewById(R.id.lightTimerView);
@@ -57,14 +48,14 @@ public class LightActivity extends AppCompatActivity {
     public void buttonOnLight(View view){
 
         // Run the door locks command execute function
-        liCMD.executeOn(view);
+        liCMD.executeOn();
     }
 
     // Handles the light off button click
     public void buttonOffLight(View view) {
 
         // Run the light off execute function
-        liCMD.executeOff(view);
+        liCMD.executeOff();
     }
 }
 

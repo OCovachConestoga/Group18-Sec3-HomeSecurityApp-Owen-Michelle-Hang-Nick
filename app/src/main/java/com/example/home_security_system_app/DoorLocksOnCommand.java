@@ -22,25 +22,25 @@ public class DoorLocksOnCommand implements Command {
     }
 
     // Function that handles the added setLockPin execution
-    public void setLockPin(View view){
+    public void setLockPin(){
 
         // Runs the DoorLocks setLockPin function
-        dl.setLockPin(view);
+        dl.setLockPin();
     }
 
     // Implementation of on execution
     @Override
-    public void executeOn(View view){
+    public void executeOn(){
 
         // Runs the DoorLocks lock function
-        dl.lock(view);
+        dl.lock();
     }
 
     // Implementation of off execution
     @Override
-    public void executeOff(View view){
+    public void executeOff(){
 
         // Runs the DoorLocks unlock function
-        dl.unlock(view);
+        dl.unlock();
     }
 }

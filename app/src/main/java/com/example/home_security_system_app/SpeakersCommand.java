@@ -15,13 +15,12 @@ public class SpeakersCommand implements Command{
     }
 
     @Override
-    public void executeOn(View view) {
-        speakers.turnon(view);
-
+    public void executeOn() {
+        speakers.turnon();
     }
 
     @Override
-    public void executeOff(View view) {
-        speakers.turnoff(view);
+    public void executeOff() {
+        speakers.turnoff();
     }
 }

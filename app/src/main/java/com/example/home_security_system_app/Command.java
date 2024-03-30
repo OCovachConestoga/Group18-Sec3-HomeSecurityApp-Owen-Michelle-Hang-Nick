@@ -11,9 +11,9 @@ public interface Command {
 
     // Definition of executeOn function
     // View is needed because we are using android studio views
-    void executeOn(View view);
+    void executeOn();
 
     // Definition of executeOff function
     // View is needed because we are using android studio views
-    void executeOff(View view);
+    void executeOff();
 }

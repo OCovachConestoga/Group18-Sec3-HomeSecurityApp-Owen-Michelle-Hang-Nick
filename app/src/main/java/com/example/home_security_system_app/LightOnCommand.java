@@ -23,24 +23,24 @@ public class LightOnCommand implements Command{
 
     // Implementation of on execution
     @Override
-    public void executeOn(View view){
+    public void executeOn(){
 
         // Runs the DoorLocks start function
-        li.on(view);
+        li.on();
     }
 
     // Implementation of off execution
     @Override
-    public void executeOff(View view){
+    public void executeOff(){
 
         // Runs the  stop function
-        li.off(view);
+        li.off();
     }
 
     // Function that handles the added light timer execution
-    public void setTimer(View view){
+    public void setTimer(){
 
         // Runs the DoorLocks setLockPin function
-        li.setTimer(view);
+        li.setTimer();
     }
 }

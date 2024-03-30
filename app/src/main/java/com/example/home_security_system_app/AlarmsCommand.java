@@ -14,12 +14,12 @@ public class AlarmsCommand implements Command {
     }
 
     @Override
-    public void executeOn(View view) {
-        alarms.turnon(view);
+    public void executeOn() {
+        alarms.turnon();
     }
 
     @Override
-    public void executeOff(View view) {
-        alarms.turnoff(view);
+    public void executeOff() {
+        alarms.turnoff();
     }
 }

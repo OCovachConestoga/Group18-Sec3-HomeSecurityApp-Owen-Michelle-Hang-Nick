@@ -2,7 +2,6 @@ package com.example.home_security_system_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -29,52 +28,34 @@ public class MainActivity extends AppCompatActivity {
         speakerCard = findViewById(R.id.speakerCard);
 
 
-        cameraCard.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CameraActivity.class);
-                startActivity(intent);
-            }
+        cameraCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+            startActivity(intent);
         });
 
-        doorLocksCard.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, DoorLocksActivity.class);
-                startActivity(intent);
-            }
+        doorLocksCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, DoorLocksActivity.class);
+            startActivity(intent);
         });
 
-        motionDetectorCard.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MotionDetectorActivity.class);
-                startActivity(intent);
-            }
+        motionDetectorCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, MotionDetectorActivity.class);
+            startActivity(intent);
         });
 
-        lightCard.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LightActivity.class);
-                startActivity(intent);
-            }
+        lightCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, LightActivity.class);
+            startActivity(intent);
         });
 
-        alarmCard.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
-                startActivity(intent);
-            }
+        alarmCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
+            startActivity(intent);
         });
 
-        speakerCard.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SpeakerActivity.class);
-                startActivity(intent);
-            }
+        speakerCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SpeakerActivity.class);
+            startActivity(intent);
         });
 
     }

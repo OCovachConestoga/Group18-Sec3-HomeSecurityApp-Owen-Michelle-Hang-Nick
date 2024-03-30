@@ -23,17 +23,17 @@ public class MotionDetectorOnCommand implements Command{
 
     // Implementation of on execution
     @Override
-    public void executeOn(View view){
+    public void executeOn(){
 
         // Runs the DoorLocks start function
-        md.start(view);
+        md.start();
     }
 
     // Implementation of off execution
     @Override
-    public void executeOff(View view){
+    public void executeOff(){
 
         // Runs the DoorLocks stop function
-        md.stop(view);
+        md.stop();
     }
 }

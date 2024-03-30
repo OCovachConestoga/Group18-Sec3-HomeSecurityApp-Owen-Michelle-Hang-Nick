@@ -4,16 +4,9 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DataSnapshot;
 
 // This class handles the Android studio GUI interactions and bridges to the command design pattern
 public class MotionDetectorActivity extends AppCompatActivity {
@@ -55,14 +48,14 @@ public class MotionDetectorActivity extends AppCompatActivity {
     public void buttonStartDetecting(View view){
 
             // Run the door locks command execute function
-            mdCMD.executeOn(view);
+            mdCMD.executeOn();
     }
 
     // Handles the unlock doors button click
     public void buttonStopDetecting(View view){
 
             // Run the door locks command execute function
-            mdCMD.executeOff(view);
+            mdCMD.executeOff();
 
     }
 
