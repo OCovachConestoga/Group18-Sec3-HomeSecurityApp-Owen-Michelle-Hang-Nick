@@ -6,31 +6,20 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Home_Security_System_App"
         tools:targetApi="31">
         <activity
-            android:name=".LightActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Light"
-            android:exported="false" />
-        <activity
             android:name=".CameraActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Camera"
             android:exported="false" />
         <activity
             android:name=".DoorLocksActivity"
