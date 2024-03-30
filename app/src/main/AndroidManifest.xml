@@ -12,12 +12,15 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Home_Security_System_App"
         tools:targetApi="31">
+        <activity
+            android:name=".AlarmActivity"
+            android:exported="false" />
         <activity
             android:name=".CameraActivity"
             android:exported="false" />
@@ -25,17 +28,17 @@
             android:name=".DoorLocksActivity"
             android:exported="false" />
         <activity
-            android:name=".DoorLocks"
+            android:name=".LightActivity"
             android:exported="false" />
         <activity
             android:name=".MotionDetectorActivity"
             android:exported="false" />
-        <activity
-            android:name=".MotionDetector"
-            android:exported="false" />
+        <activity android:name=".SpeakerActivity"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
