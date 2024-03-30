@@ -49,7 +49,7 @@ public class Light{
         if(isSetup)
             lightDisplay.setText("Light is Turned On \\o/");
         else
-            lightDisplay.setText("No Light to Turn On /o\\");
+            lightDisplay.setText("No Light to Turn On /o\\ ... Please complete setup first to turn on the light.");
     }
 
     // Function to simulate turning off the light
@@ -60,7 +60,7 @@ public class Light{
         if(isSetup)
             lightDisplay.setText("Light is Turned Off \\o/");
         else
-            lightDisplay.setText("No Light to turn off /o\\");
+            lightDisplay.setText("No Light to turn off /o\\ ... Please complete setup first to turn on the light.");
     }
 
     // Function to simulate setting up the light timer
@@ -71,7 +71,7 @@ public class Light{
         if(isSetup)
             lightDisplay.setText("Light Timer is Set Up \\o/");
         else
-            lightDisplay.setText("No Light to Turn On /o\\");
+            lightDisplay.setText("No Light to Turn On /o\\ ... Please complete setup first to turn on the light.");
     }
 
 }
