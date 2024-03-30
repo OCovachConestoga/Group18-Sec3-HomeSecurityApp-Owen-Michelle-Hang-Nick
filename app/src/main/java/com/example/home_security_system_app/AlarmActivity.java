@@ -22,7 +22,7 @@ public class AlarmActivity extends AppCompatActivity {
         alarmDisplay.setText("No Speakers Setup /o\\");
 
         // Create the necessary instances of the system for the command design pattern
-        Alarms alarms = new Alarms(alarmDisplay);
+        Alarms alarms = new Alarms(alarmDisplay, this);
         almCMD = new AlarmsCommand(alarms);
 
     }

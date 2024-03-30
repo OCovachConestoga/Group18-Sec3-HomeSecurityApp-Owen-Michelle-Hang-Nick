@@ -1,19 +1,24 @@
 package com.example.home_security_system_app;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Alarms {
 
     // Create variable that are used by this class
     private final TextView alarmDisplay;
+
+    private final Context context;
     private boolean isSetup = false; // default to false when first loading up
 
     //Parameterized Constructor
-    Alarms(TextView textView){
+    Alarms(TextView textView, Context context){
         alarmDisplay = textView;
+        this.context = context;
     }
 
     // Function to simulate setting up Alarms
@@ -50,7 +55,11 @@ public class Alarms {
         if(isSetup)
             alarmDisplay.setText("Alarms Activated \\o/");
         else
+        {
             alarmDisplay.setText("No Alarms to turn on /o\\");
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -61,7 +70,11 @@ public class Alarms {
         if(isSetup)
             alarmDisplay.setText("Alarms Deactivated \\o/");
         else
+        {
             alarmDisplay.setText("No Alarms to turn off /o\\");
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
