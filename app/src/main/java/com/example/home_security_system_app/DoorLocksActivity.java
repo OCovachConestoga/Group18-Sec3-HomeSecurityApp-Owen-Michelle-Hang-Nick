@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 // This class handles the Android studio GUI interactions and bridges to the command design pattern
 public class DoorLocksActivity extends AppCompatActivity {
 
@@ -25,12 +28,16 @@ public class DoorLocksActivity extends AppCompatActivity {
         TextView doorLockDisplay = findViewById(R.id.doorLocksView);
         doorLockDisplay.setText("No DoorLocks Setup /o\\");
 
+        // Initialize Firebase DB
+        // Firebase Database reference
+        DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference();
+
         // Make the text input invisible
         EditText pinText = findViewById(R.id.setLockPinText);
         pinText.setVisibility(View.INVISIBLE);
 
         // Create the necessary instances of the system for the command design pattern
-        DoorLocks dl = new DoorLocks(doorLockDisplay, pinText, this);
+        DoorLocks dl = new DoorLocks(doorLockDisplay, pinText, myDatabase, this);
         dlCMD = new DoorLocksOnCommand(dl);
     }
 

@@ -8,19 +8,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+
 // Class that defines the DoorLocks system
 public class DoorLocks{
 
     // Create variable that are used by this class
     private final TextView doorLockDisplay;
     private final EditText pinText;
+
+    private final DatabaseReference myDatabase;
     private final Context context;
     private boolean isSetup = false; // default to false when first loading up
 
     //Parameterized Constructor
-    DoorLocks(TextView textView, EditText editText, Context context){
+    DoorLocks(TextView textView, EditText editText, DatabaseReference database, Context context){
         doorLockDisplay = textView;
         pinText = editText;
+        myDatabase = database;
         this.context = context;
     }
 
@@ -87,7 +92,11 @@ public class DoorLocks{
 
         // Checks if the system is setup or not
         if(isSetup)
+        {
+            myDatabase.child("DOOR_State").setValue("ON");
             doorLockDisplay.setText("DoorLocks Locked \\o/");
+        }
+
         else
         {
             doorLockDisplay.setText("No DoorLocks to Lock /o\\");
@@ -103,7 +112,10 @@ public class DoorLocks{
 
         // Checks if the system is setup or not
         if(isSetup)
+        {
+            myDatabase.child("DOOR_State").setValue("OFF");
             doorLockDisplay.setText("DoorLocks Unlocked \\o/");
+        }
         else
         {
             doorLockDisplay.setText("No DoorLocks to Unlock /o\\");
