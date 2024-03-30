@@ -21,17 +21,6 @@ public class MotionDetectorActivity extends AppCompatActivity {
     // Create variable that are used by this class
     private MotionDetectorOnCommand mdCMD;
 
-    // Firebase Database reference
-    private DatabaseReference myDatabase;
-
-    // Display motion detector status back
-    private TextView motionDetectorDisplay;
-
-    // Check setup status
-    private boolean isSetupDone = false;
-
-    // Check startButton detection
-    private boolean isDetectionStarted = false;
 
     // Function that handles loading the view
     @SuppressLint("SetTextI18n")
@@ -42,14 +31,16 @@ public class MotionDetectorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_motiondetector);
 
         // Initialize Firebase DB
-        myDatabase = FirebaseDatabase.getInstance().getReference();
+        // Firebase Database reference
+        DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Creates a local TextView to pass to the MotionDetector object
-        motionDetectorDisplay = findViewById(R.id.motionDetectorView);
+        // Display motion detector status back
+        TextView motionDetectorDisplay = findViewById(R.id.motionDetectorView);
         motionDetectorDisplay.setText("No Motion Detector Setup /o\\");
 
         // Create the necessary instances of the system for the command design pattern
-        MotionDetector md = new MotionDetector(motionDetectorDisplay);
+        MotionDetector md = new MotionDetector(motionDetectorDisplay, myDatabase, this);
         mdCMD = new MotionDetectorOnCommand(md);
     }
 
@@ -58,73 +49,22 @@ public class MotionDetectorActivity extends AppCompatActivity {
 
         // Run the door locks command execute function
         mdCMD.executeSetup(view);
-
-        isSetupDone = true;
     }
 
     // Handles the lock doors button click
     public void buttonStartDetecting(View view){
 
-        if(isSetupDone)
-        {
             // Run the door locks command execute function
             mdCMD.executeOn(view);
-
-            myDatabase.child("MOTION_Mode").setValue("ON");
-
-            isDetectionStarted = true;
-
-            // Listen for any changes in MOTION_State from Firebase
-            motionStateListener();
-        } else {
-            // https://developer.android.com/guide/topics/ui/notifiers/toasts
-            Toast.makeText(this, "Please complete setup first.", Toast.LENGTH_SHORT).show();
-        }
-
-
     }
 
     // Handles the unlock doors button click
     public void buttonStopDetecting(View view){
 
-        if(isSetupDone)
-        {
             // Run the door locks command execute function
             mdCMD.executeOff(view);
 
-            myDatabase.child("MOTION_Mode").setValue("OFF");
-
-            isDetectionStarted = false;
-        } else
-        {
-            // https://developer.android.com/guide/topics/ui/notifiers/toasts
-            Toast.makeText(this, "Please complete setup first.", Toast.LENGTH_SHORT).show();
-
-        }
-
     }
 
-    private void motionStateListener()
-    {
-
-        if(!isSetupDone || !isDetectionStarted)
-        {
-            return;
-        }
-
-        myDatabase.child("MOTION_State").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String motionState = snapshot.getValue(String.class);
-
-                motionDetectorDisplay.setText("Motion State: " + (motionState != null ? motionState: "No motion detected"));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 
 }
