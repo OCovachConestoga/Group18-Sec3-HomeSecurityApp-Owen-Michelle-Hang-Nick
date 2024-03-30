@@ -7,18 +7,22 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+
 // Class that defines the Speakers system
 public class Speakers{
 
     // Create variable that are used by this class
     private final TextView speakerDisplay;
 
+    private final DatabaseReference myDatabase;
     private final Context context;
     private boolean isSetup = false; // default to false when first loading up
 
     //Parameterized Constructor
-   Speakers(TextView textView, Context context){
+   Speakers(TextView textView, DatabaseReference database, Context context){
        speakerDisplay = textView;
+       myDatabase = database;
        this.context = context;
     }
 
@@ -40,6 +44,7 @@ public class Speakers{
         }
         else
         {
+            myDatabase.child("SPEAKER_State").setValue("OFF");
             tempSetupButton.setText("Setup");
             speakerDisplay.setText("Speakers Disconnected \\o/");
         }
@@ -54,7 +59,10 @@ public class Speakers{
     public void turnon(View view){
         // Checks if the system is setup or not
         if(isSetup)
+        {
+            myDatabase.child("SPEAKER_State").setValue("ON");
             speakerDisplay.setText("Speakers Turned On \\o/");
+        }
         else
         {
             speakerDisplay.setText("No Speakers to turn on /o\\");
@@ -69,7 +77,11 @@ public class Speakers{
     public void turnoff(View view){
         // Checks if the system is setup or not
         if(isSetup)
+        {
+            myDatabase.child("SPEAKER_State").setValue("OFF");
             speakerDisplay.setText("Speakers Turned Off \\o/");
+        }
+
         else
         {
             speakerDisplay.setText("No Speakers to turn off /o\\");

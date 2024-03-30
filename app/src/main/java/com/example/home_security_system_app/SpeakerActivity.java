@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class SpeakerActivity extends AppCompatActivity {
 
     private SpeakersCommand spkCMD;
@@ -22,8 +25,12 @@ public class SpeakerActivity extends AppCompatActivity {
         TextView speakerDisplay = findViewById(R.id.speakerView);
         speakerDisplay.setText("No Speakers Setup /o\\");
 
+        // Initialize Firebase DB
+        // Firebase Database reference
+        DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference();
+
         // Create the necessary instances of the system for the command design pattern
-        Speakers speaker = new Speakers(speakerDisplay, this);
+        Speakers speaker = new Speakers(speakerDisplay, myDatabase, this);
         spkCMD = new SpeakersCommand(speaker);
 
     }
