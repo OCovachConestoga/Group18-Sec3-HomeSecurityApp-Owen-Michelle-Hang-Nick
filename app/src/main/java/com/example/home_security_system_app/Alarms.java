@@ -7,17 +7,22 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class Alarms {
 
     // Create variable that are used by this class
     private final TextView alarmDisplay;
 
     private final Context context;
+
+    private final DatabaseReference myDatabase;
     private boolean isSetup = false; // default to false when first loading up
 
     //Parameterized Constructor
-    Alarms(TextView textView, Context context){
+    Alarms(TextView textView, DatabaseReference database, Context context){
         alarmDisplay = textView;
+        myDatabase = database;
         this.context = context;
     }
 
@@ -39,6 +44,7 @@ public class Alarms {
         }
         else
         {
+            myDatabase.child("ALARMS_State").setValue("OFF");
             tempSetupButton.setText("Setup");
             alarmDisplay.setText("Alarms Disconnected \\o/");
         }
@@ -53,7 +59,11 @@ public class Alarms {
     public void turnon(View view){
         // Checks if the system is setup or not
         if(isSetup)
+        {
+            myDatabase.child("ALARMS_State").setValue("ON");
             alarmDisplay.setText("Alarms Activated \\o/");
+        }
+
         else
         {
             alarmDisplay.setText("No Alarms to turn on /o\\");
@@ -68,7 +78,10 @@ public class Alarms {
     public void turnoff(View view){
         // Checks if the system is setup or not
         if(isSetup)
+        {
+            myDatabase.child("ALARMS_State").setValue("OFF");
             alarmDisplay.setText("Alarms Deactivated \\o/");
+        }
         else
         {
             alarmDisplay.setText("No Alarms to turn off /o\\");

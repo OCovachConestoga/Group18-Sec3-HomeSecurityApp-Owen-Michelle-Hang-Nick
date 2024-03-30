@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class AlarmActivity extends AppCompatActivity {
 
     private AlarmsCommand almCMD;
@@ -21,8 +24,12 @@ public class AlarmActivity extends AppCompatActivity {
         TextView alarmDisplay = findViewById(R.id.alarmView);
         alarmDisplay.setText("No Speakers Setup /o\\");
 
+        // Initialize Firebase DB
+        // Firebase Database reference
+        DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference();
+
         // Create the necessary instances of the system for the command design pattern
-        Alarms alarms = new Alarms(alarmDisplay, this);
+        Alarms alarms = new Alarms(alarmDisplay, myDatabase, this);
         almCMD = new AlarmsCommand(alarms);
 
     }
