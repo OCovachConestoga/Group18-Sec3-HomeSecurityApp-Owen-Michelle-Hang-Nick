@@ -19,7 +19,6 @@ public class CameraActivity extends AppCompatActivity {
 
     private CameraOnCommand camCMD;
     private TextView cameraStatus;
-    private boolean isSetupDone = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +49,6 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     public void buttonStopCamera(View view) {
-        try {
-            camCMD.executeOff(view);
-        } catch (Exception e) {
-            cameraStatus.setText("Failed to stop camera:");
-        }
+        camCMD.executeOff(view);
     }
 }

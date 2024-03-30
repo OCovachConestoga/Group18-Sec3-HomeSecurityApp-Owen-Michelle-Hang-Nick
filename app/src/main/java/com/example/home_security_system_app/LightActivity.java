@@ -25,9 +25,6 @@ public class LightActivity extends AppCompatActivity {
     // Firebase Database reference
     private DatabaseReference myDatabase;
 
-    // Check setup status
-    private boolean isSetupDone = false;
-
     // this function handles loading the view
     @SuppressLint("SetTextI18n")
     @Override
@@ -44,7 +41,7 @@ public class LightActivity extends AppCompatActivity {
         lightDisplay.setText("No Light Setup /o\\");
 
         // Create the necessary instances of the system for the command design pattern
-        Light li = new Light(lightDisplay);
+        Light li = new Light(lightDisplay, myDatabase, this);
         liCMD = new LightOnCommand(li);
     }
 
@@ -54,44 +51,21 @@ public class LightActivity extends AppCompatActivity {
 
         // Run the door locks command execute function
         liCMD.executeSetup(view);
-
-        isSetupDone = true;
     }
 
     // Handles the light on  button click
     public void buttonOnLight(View view){
 
-        if(isSetupDone)
-        {
-            // Run the door locks command execute function
-            liCMD.executeOn(view);
-
-            myDatabase.child("LED_State").setValue("ON");
-        } else {
-            // https://developer.android.com/guide/topics/ui/notifiers/toasts
-            Toast.makeText(this, "Please complete setup first.", Toast.LENGTH_SHORT).show();
-        }
+        // Run the door locks command execute function
+        liCMD.executeOn(view);
     }
 
     // Handles the light off button click
-    public void buttonOffLight(View view){
+    public void buttonOffLight(View view) {
 
-        if(isSetupDone)
-        {
-            // Run the light off execute function
-            liCMD.executeOff(view);
-
-            myDatabase.child("LED_State").setValue("OFF");
-        } else
-        {
-            // https://developer.android.com/guide/topics/ui/notifiers/toasts
-            Toast.makeText(this, "Please complete setup first.", Toast.LENGTH_SHORT).show();
-
-        }
+        // Run the light off execute function
+        liCMD.executeOff(view);
     }
-
-
-
 }
 
 
