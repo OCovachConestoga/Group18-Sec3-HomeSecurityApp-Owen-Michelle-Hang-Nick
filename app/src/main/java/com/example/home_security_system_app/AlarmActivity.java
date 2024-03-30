@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AlarmActivity extends AppCompatActivity {
 
-    private AlarmsCommand almCMD;
+    private AlarmsOnCommand almCMD;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -30,7 +30,7 @@ public class AlarmActivity extends AppCompatActivity {
 
         // Create the necessary instances of the system for the command design pattern
         Alarms alarms = new Alarms(alarmDisplay, myDatabase, this);
-        almCMD = new AlarmsCommand(alarms);
+        almCMD = new AlarmsOnCommand(alarms);
 
     }
 

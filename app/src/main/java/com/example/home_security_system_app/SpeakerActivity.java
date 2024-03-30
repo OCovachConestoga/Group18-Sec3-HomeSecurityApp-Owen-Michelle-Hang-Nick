@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SpeakerActivity extends AppCompatActivity {
 
-    private SpeakersCommand spkCMD;
+    private SpeakersOnCommand spkCMD;
 
 
     @SuppressLint("SetTextI18n")
@@ -31,7 +31,7 @@ public class SpeakerActivity extends AppCompatActivity {
 
         // Create the necessary instances of the system for the command design pattern
         Speakers speaker = new Speakers(speakerDisplay, myDatabase, this);
-        spkCMD = new SpeakersCommand(speaker);
+        spkCMD = new SpeakersOnCommand(speaker);
 
     }
 

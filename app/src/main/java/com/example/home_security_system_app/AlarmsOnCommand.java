@@ -2,11 +2,11 @@ package com.example.home_security_system_app;
 
 import android.view.View;
 
-public class AlarmsCommand implements Command {
+public class AlarmsOnCommand implements Command {
 
     Alarms alarms;
 
-    AlarmsCommand(Alarms al) {alarms = al;}
+    AlarmsOnCommand(Alarms al) {alarms = al;}
 
     @Override
     public void executeSetup(View view) {

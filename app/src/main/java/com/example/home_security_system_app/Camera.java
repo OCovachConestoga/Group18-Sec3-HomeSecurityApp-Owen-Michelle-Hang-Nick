@@ -201,7 +201,7 @@ public class Camera{
 
     }
 
-    public void StopCamera()
+    private void StopCamera()
     {
         try {
             myCameraCaptureSession.abortCaptures();

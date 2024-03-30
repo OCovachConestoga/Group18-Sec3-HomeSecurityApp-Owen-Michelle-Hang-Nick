@@ -12,8 +12,8 @@ public class MainActivity extends AppCompatActivity {
     CardView doorLocksCard;
     CardView motionDetectorCard;
     CardView lightCard;
-    CardView alarmCard;
-    CardView speakerCard;
+    CardView alarmsCard;
+    CardView speakersCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         doorLocksCard = findViewById(R.id.doorLocksCard);
         motionDetectorCard = findViewById(R.id.motionDetectorCard);
         lightCard = findViewById(R.id.lightCard);
-        alarmCard = findViewById(R.id.alarmsCard);
-        speakerCard = findViewById(R.id.speakerCard);
+        alarmsCard = findViewById(R.id.alarmsCard);
+        speakersCard = findViewById(R.id.speakerCard);
 
 
         cameraCard.setOnClickListener(view -> {
@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        alarmCard.setOnClickListener(view -> {
+        alarmsCard.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
             startActivity(intent);
         });
 
-        speakerCard.setOnClickListener(view -> {
+        speakersCard.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, SpeakerActivity.class);
             startActivity(intent);
         });
