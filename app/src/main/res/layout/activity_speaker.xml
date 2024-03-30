@@ -49,7 +49,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/setupSpeaker"
+        android:id="@+id/setupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -69,7 +69,7 @@
         android:textSize="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setupSpeaker" />
+        app:layout_constraintTop_toBottomOf="@+id/setupButton" />
 
     <Button
         android:id="@+id/startSpeaker"

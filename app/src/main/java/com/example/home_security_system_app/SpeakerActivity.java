@@ -23,7 +23,7 @@ public class SpeakerActivity extends AppCompatActivity {
         speakerDisplay.setText("No Speakers Setup /o\\");
 
         // Create the necessary instances of the system for the command design pattern
-        Speakers speaker = new Speakers(speakerDisplay);
+        Speakers speaker = new Speakers(speakerDisplay, this);
         spkCMD = new SpeakersCommand(speaker);
 
     }

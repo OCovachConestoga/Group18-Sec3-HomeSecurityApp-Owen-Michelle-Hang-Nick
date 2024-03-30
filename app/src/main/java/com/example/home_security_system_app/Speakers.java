@@ -1,20 +1,25 @@
 package com.example.home_security_system_app;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 // Class that defines the Speakers system
 public class Speakers{
 
     // Create variable that are used by this class
     private final TextView speakerDisplay;
+
+    private final Context context;
     private boolean isSetup = false; // default to false when first loading up
 
     //Parameterized Constructor
-   Speakers(TextView textView){
+   Speakers(TextView textView, Context context){
        speakerDisplay = textView;
+       this.context = context;
     }
 
     // Function to simulate setting up Speakers
@@ -51,7 +56,11 @@ public class Speakers{
         if(isSetup)
             speakerDisplay.setText("Speakers Turned On \\o/");
         else
+        {
             speakerDisplay.setText("No Speakers to turn on /o\\");
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -62,7 +71,11 @@ public class Speakers{
         if(isSetup)
             speakerDisplay.setText("Speakers Turned Off \\o/");
         else
+        {
             speakerDisplay.setText("No Speakers to turn off /o\\");
+            // https://developer.android.com/guide/topics/ui/notifiers/toasts
+            Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
