@@ -9,24 +9,49 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 
+/**
+ * Receiver class that contains the functionality of the Alarm system
+ */
 public class Alarms {
 
-    // Create variable that are used by this class
+    /**
+     * Variable that holds the display of the actions
+     */
     private final TextView alarmDisplay;
 
+    /**
+     * Variable that holds information about the application environment
+     */
     private final Context context;
 
+    /**
+     * Variable that holds a Firebase reference
+     */
     private final DatabaseReference myDatabase;
-    private boolean isSetup = false; // default to false when first loading up
 
-    //Parameterized Constructor
+    /**
+     * Variable that hold the state of being setup or not
+     * Defaults to false when first loading up
+     */
+    private boolean isSetup = false;
+
+    /**
+     * Parameterized Constructor
+     *
+     * @param textView holds the display element
+     * @param database hold reference to Firebase
+     * @param context hold application environment
+     */
     Alarms(TextView textView, DatabaseReference database, Context context){
         alarmDisplay = textView;
         myDatabase = database;
         this.context = context;
     }
 
-    // Function to simulate setting up Alarms
+    /**
+     * Function to simulate setting up Alarms
+     * @param view holds the current window view
+     */
     @SuppressLint("SetTextI18n")
     public void setup(View view){
 
@@ -53,8 +78,9 @@ public class Alarms {
         isSetup = !isSetup;
     }
 
-
-    // Function to simulate Turning Alarms On
+    /**
+     * Function to simulate setting up Alarms
+     */
     @SuppressLint("SetTextI18n")
     public void turnon(){
         // Checks if the system is setup or not
@@ -73,7 +99,9 @@ public class Alarms {
 
     }
 
-    // Function to simulate Turning Alarms Off
+    /**
+     * Function to simulate Turning Alarms Off
+     */
     @SuppressLint("SetTextI18n")
     public void turnoff(){
         // Checks if the system is setup or not

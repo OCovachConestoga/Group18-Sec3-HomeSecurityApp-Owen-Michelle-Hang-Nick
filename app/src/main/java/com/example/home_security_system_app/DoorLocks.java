@@ -10,18 +10,46 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 
-// Class that defines the DoorLocks system
+/**
+ * Receiver class that contains the functionality of the DoorLocks system
+ */
 public class DoorLocks{
 
-    // Create variable that are used by this class
+    /**
+     * Variable that holds the display of the actions
+     */
     private final TextView doorLockDisplay;
+
+    /**
+     * Variable that holds a editable text box
+     */
     private final EditText pinText;
 
+    /**
+     * Variable that holds a Firebase reference
+     */
     private final DatabaseReference myDatabase;
+
+    /**
+     * Variable that holds an application environment
+     */
     private final Context context;
+
+    /**
+     * Variable that hold the state of being setup or not
+     * Defaults to false when first loading up
+     */
     private boolean isSetup = false; // default to false when first loading up
 
-    //Parameterized Constructor
+
+    /**
+     * Parameterized Constructor
+     *
+     * @param textView holds the display element
+     * @param editText holds the editable text box element
+     * @param database hold reference to Firebase
+     * @param context hold application environment
+     */
     DoorLocks(TextView textView, EditText editText, DatabaseReference database, Context context){
         doorLockDisplay = textView;
         pinText = editText;
@@ -29,7 +57,10 @@ public class DoorLocks{
         this.context = context;
     }
 
-    // Function to simulate setting up doorlocks
+    /**
+     * Function to simulate setting up DoorLocks
+     * @param view holds the current window view
+     */
     @SuppressLint("SetTextI18n")
     public void setup(View view){
 
@@ -55,7 +86,9 @@ public class DoorLocks{
         isSetup = !isSetup;
     }
 
-    // Function to simulate the setup of a lock pin
+    /**
+     * Function to simulate the setup of a lock pin
+     */
     @SuppressLint("SetTextI18n")
     public void setLockPin() {
 
@@ -86,7 +119,9 @@ public class DoorLocks{
 
     }
 
-    // Function to simulate Locking doors
+    /**
+     * Function to simulate Locking doors
+     */
     @SuppressLint("SetTextI18n")
     public void lock(){
 
@@ -106,7 +141,9 @@ public class DoorLocks{
 
     }
 
-    // Function to simulate Unlocking Doors
+    /**
+     * Function to simulate Unlocking Doors
+     */
     @SuppressLint("SetTextI18n")
     public void unlock(){
 

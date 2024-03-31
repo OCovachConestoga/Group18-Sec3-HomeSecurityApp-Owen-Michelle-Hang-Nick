@@ -5,14 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SpeakerActivity">
+    tools:context=".SpeakersActivity">
 
     <TextView
         android:id="@+id/speakerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Speaker"
+        android:text="@string/speaker"
         android:textColor="@color/lavender"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +66,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/no_doorlocks_setup"
         android:textAlignment="center"
-        android:textSize="45dp"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setupButton" />
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:onClick="buttonStartSpeaker"
-        android:text="Start Speaker"
+        android:text="@string/start_speaker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/speakerView" />
@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:onClick="buttonStopSpeaker"
-        android:text="Stop Speaker"
+        android:text="@string/stop_speaker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startSpeaker" />

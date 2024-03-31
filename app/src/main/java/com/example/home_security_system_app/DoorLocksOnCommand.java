@@ -2,18 +2,28 @@ package com.example.home_security_system_app;
 
 import android.view.View;
 
-// Concrete Command Class that implements the commands for DoorLocks
+/**
+ * Concrete command class that handles the execution of the doorlocks button presses
+ */
 public class DoorLocksOnCommand implements Command {
 
-    // Create variable that are used by this class
+    /**
+     * Variable that holds on instance of the doorlocks receiver
+     */
     DoorLocks dl;
 
-    // Parameterized constructor
+    /**
+     * Parameterized constructor
+     * @param DL doorlocks instance
+     */
     DoorLocksOnCommand(DoorLocks DL){
         dl = DL;
     }
 
-    // Implementation of setup execution
+    /**
+     * Function to execute setup function of the doorlocks
+     * @param view holds the current window view
+     */
     @Override
     public void executeSetup(View view){
 
@@ -21,14 +31,18 @@ public class DoorLocksOnCommand implements Command {
         dl.setup(view);
     }
 
-    // Function that handles the added setLockPin execution
+    /**
+     * Function that handles the added setLockPin execution
+     */
     public void setLockPin(){
 
         // Runs the DoorLocks setLockPin function
         dl.setLockPin();
     }
 
-    // Implementation of on execution
+    /**
+     * Implementation of on execution
+     */
     @Override
     public void executeOn(){
 
@@ -36,7 +50,9 @@ public class DoorLocksOnCommand implements Command {
         dl.lock();
     }
 
-    // Implementation of off execution
+    /**
+     * Implementation of off execution
+     */
     @Override
     public void executeOff(){
 

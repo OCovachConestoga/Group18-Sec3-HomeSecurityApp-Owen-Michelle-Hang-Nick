@@ -10,27 +10,50 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 
 
-// Class that defines the Light system
+/**
+ * Receiver class that contains the functionality of the Alarm system
+ */
 public class Light{
 
-    // Create variable that are used by this class
+    /**
+     * Variable that holds the display of the actions
+     */
     private final TextView lightDisplay;
 
+    /**
+     * Variable that holds a Firebase reference
+     */
     private final DatabaseReference myDatabase;
 
+    /**
+     * Variable that holds information about the application environment
+     */
     private final Context context;
 
+    /**
+     * Variable that hold the state of being setup or not
+     * Defaults to false when first loading up
+     */
     private boolean isSetup = false; // default to false when first loading up
 
 
-    //Parameterized Constructor
+    /**
+     * Parameterized Constructor
+     *
+     * @param textView holds the display element
+     * @param database hold reference to Firebase
+     * @param context hold application environment
+     */
     Light(TextView textView, DatabaseReference database, Context context){
         this.lightDisplay = textView;
         this.myDatabase = database;
         this.context = context;
     }
 
-    // Function to simulate setting up light
+    /**
+     * Function to simulate setting up Lights
+     * @param view holds the current window view
+     */
     @SuppressLint("SetTextI18n")
     public void setup(View view){
         Button tempSetupButton = view.findViewById(R.id.setupButton);
@@ -52,9 +75,12 @@ public class Light{
         isSetup = !isSetup;
     }
 
-    // Function to simulate turning on the light
+    /**
+     * Function to simulate turning on the light
+     */
     @SuppressLint("SetTextI18n")
-    public void on(){ // on was start
+    public void on(){
+        // on was start
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -71,9 +97,12 @@ public class Light{
 
     }
 
-    // Function to simulate turning off the light
+    /**
+     * Function to simulate turning off the light
+     */
     @SuppressLint("SetTextI18n")
-    public void off(){ // was stop now off
+    public void off(){
+        // was stop now off
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -88,17 +117,4 @@ public class Light{
             Toast.makeText(this.context, "Please complete setup first.", Toast.LENGTH_SHORT).show();
         }
     }
-
-    // Function to simulate setting up the light timer
-    @SuppressLint("SetTextI18n")
-    public void setTimer(){
-
-        // Checks if the system is setup or not
-        if(isSetup) {
-            lightDisplay.setText("Light Timer is Set Up \\o/");
-        }
-        else
-            lightDisplay.setText("No Light to Turn On /o\\");
-    }
-
 }

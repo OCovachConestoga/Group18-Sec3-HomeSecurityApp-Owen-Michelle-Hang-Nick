@@ -5,14 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlarmActivity">
+    tools:context=".AlarmsActivity">
 
     <TextView
         android:id="@+id/alarmTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Alarm"
+        android:text="@string/alarm"
         android:textColor="@color/lavender"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:onClick="buttonSetup"
-        android:text="Setup"
+        android:text="@string/setup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alarmsCard" />
@@ -65,7 +65,7 @@
         android:layout_width="350dp"
         android:layout_height="270dp"
         android:layout_marginTop="50dp"
-        android:text="No Alarm Setup"
+        android:text="@string/no_alarm_setup"
         android:textAlignment="center"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:onClick="buttonStartAlarm"
-        android:text="Start Alarm"
+        android:text="@string/start_alarm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alarmView" />
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:onClick="buttonStopAlarm"
-        android:text="Stop Alarm"
+        android:text="@string/stop_alarm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startAlarm" />
