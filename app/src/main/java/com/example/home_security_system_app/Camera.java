@@ -27,28 +27,60 @@ import androidx.core.app.ActivityCompat;
 import java.util.Collections;
 
 
-// Class that defines the Camera system
+/**
+ * Receiver class that contains the functionality of the Camera system
+ */
 public class Camera{
 
-    // Create variable that are used by this class
+    /**
+     * Variable that holds a text display element
+     */
     private final TextView CameraStatus;
 
+    /**
+     * Variable that holds a camera feed
+     */
     private final TextureView CameraDisplay;
 
+    /**
+     * Variable that holds information about the application environment
+     */
     private final Context context;
 
+    /**
+     * Variable that holds a camera device
+     */
     private CameraDevice myCameraDevice;
 
+    /**
+     * Variable that holds a camera manager
+     */
     private final CameraManager cameraManager;
 
+    /**
+     * Variable that holds a session of a camera capture
+     */
     private CameraCaptureSession myCameraCaptureSession;
 
+    /**
+     * Variable that holds a capture request builder
+     */
     private CaptureRequest.Builder captureRequestBuilder;
 
+    /**
+     * Variable that hold the state of being setup or not
+     * Defaults to false when first loading up
+     */
     private boolean isSetup = false; // default to false when first loading up
 
 
-    //Parameterized Constructor
+    /**
+     *  Parameterized constructor
+     * @param textView Variable that holds the text display
+     * @param textureView  Variable that holds the camera feed display
+     * @param cameraManager Variable that holds the camera manager
+     * @param context Variable that holds the application environment
+     */
     Camera(TextView textView, TextureView textureView, CameraManager cameraManager, Context context){
         this.CameraStatus = textView;
         this.CameraDisplay = textureView;
@@ -56,7 +88,10 @@ public class Camera{
         this.context = context;
     }
 
-    // Function to simulate setting up light
+    /**
+     * Function to simulate setting up light
+     * @param view holds the current window view
+     */
     @SuppressLint("SetTextI18n")
     public void setup(View view){
         Button tempSetupButton = view.findViewById(R.id.setupButton);
@@ -78,10 +113,13 @@ public class Camera{
         isSetup = !isSetup;
     }
 
-    // Function to simulate turning on the Camera
+    /**
+     * Function to simulate turning on the Camera
+     */
     @RequiresApi(api = Build.VERSION_CODES.P)
     @SuppressLint("SetTextI18n")
-    public void on(){ // on was start
+    public void on(){
+        // on was start
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -97,9 +135,12 @@ public class Camera{
         }
     }
 
-    // Function to simulate turning off the Camera
+    /**
+     * Function to simulate turning off the Camera
+     */
     @SuppressLint("SetTextI18n")
-    public void off(){ // was stop now off
+    public void off(){
+        // was stop now off
 
         // Checks if the system is setup or not
         if(isSetup)
@@ -115,10 +156,9 @@ public class Camera{
         }
     }
 
-
-
-
-
+    /**
+     * Callback Function for the Camera device
+     */
     private final CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice cameraDevice) {
@@ -137,6 +177,9 @@ public class Camera{
         }
     };
 
+    /**
+     * Function to handle the camera device initialization
+     */
     private void startCamera() {
         try {
             String stringCameraID = cameraManager.getCameraIdList()[0];
@@ -157,6 +200,9 @@ public class Camera{
         }
     }
 
+    /**
+     * Function to handle creation of camera preview
+     */
     @RequiresApi(api = Build.VERSION_CODES.P)
     private void createCameraPreview()
     {
@@ -201,6 +247,9 @@ public class Camera{
 
     }
 
+    /**
+     * Function to handle stopping camera
+     */
     public void StopCamera()
     {
         try {

@@ -26,4 +26,11 @@
     <string name="start_detecting">Start Detecting</string>
     <string name="stop_detecting">Stop Detecting</string>
     <string name="set_lock_pin">Set Lock Pin</string>
+    <string name="alarm">Alarm</string>
+    <string name="setup">Setup</string>
+    <string name="no_alarm_setup">No Alarm Setup</string>
+    <string name="start_alarm">Start Alarm</string>
+    <string name="stop_alarm">Stop Alarm</string>
+    <string name="start_speaker">Start Speaker</string>
+    <string name="stop_speaker">Stop Speaker</string>
 </resources>

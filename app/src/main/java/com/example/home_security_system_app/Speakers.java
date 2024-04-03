@@ -9,24 +9,49 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 
-// Class that defines the Speakers system
+/**
+ * Receiver class that contains the functionality of the Alarm system
+ */
 public class Speakers{
 
-    // Create variable that are used by this class
+    /**
+     * Variable that holds the display of the actions
+     */
     private final TextView speakerDisplay;
 
-    private final DatabaseReference myDatabase;
+    /**
+     * Variable that holds information about the application environment
+     */
     private final Context context;
-    private boolean isSetup = false; // default to false when first loading up
 
-    //Parameterized Constructor
+    /**
+     * Variable that holds a Firebase reference
+     */
+    private final DatabaseReference myDatabase;
+
+    /**
+     * Variable that hold the state of being setup or not
+     * Defaults to false when first loading up
+     */
+    private boolean isSetup = false;
+
+    /**
+     * Parameterized Constructor
+     *
+     * @param textView holds the display element
+     * @param database hold reference to Firebase
+     * @param context hold application environment
+     */
    Speakers(TextView textView, DatabaseReference database, Context context){
        speakerDisplay = textView;
        myDatabase = database;
        this.context = context;
     }
 
-    // Function to simulate setting up Speakers
+    /**
+     * Function to simulate setting up Speakers
+     * @param view holds the current window view
+     */
     @SuppressLint("SetTextI18n")
     public void setup(View view){
 
@@ -53,8 +78,9 @@ public class Speakers{
         isSetup = !isSetup;
     }
 
-
-    // Function to simulate Turning Speakers On
+    /**
+     * Function to simulate Turning Speakers On
+     */
     @SuppressLint("SetTextI18n")
     public void turnon(){
         // Checks if the system is setup or not
@@ -72,7 +98,9 @@ public class Speakers{
 
     }
 
-    // Function to simulate Turning Speakers Off
+    /**
+     * Function to simulate Turning Speakers Off
+     */
     @SuppressLint("SetTextI18n")
     public void turnoff(){
         // Checks if the system is setup or not

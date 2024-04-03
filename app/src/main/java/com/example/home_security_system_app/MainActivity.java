@@ -6,15 +6,50 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+/**
+ * Main class that handles the change clicking listeners for our app to work
+ * which initializes our systems and program
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Variable that holds a card for the camera button
+     */
     CardView cameraCard;
+
+    /**
+     * Variable that holds a card for the doorlocks button
+     */
     CardView doorLocksCard;
+
+    /**
+     * Variable that holds a card for the motion detector button
+     */
     CardView motionDetectorCard;
+
+    /**
+     * Variable that holds a card for the light button
+     */
     CardView lightCard;
+
+    /**
+     * Variable that holds a card for the alarm button
+     */
     CardView alarmCard;
+
+    /**
+     * Variable that holds a card for the speaker button
+     */
     CardView speakerCard;
 
+    /**
+     * This function is a default constructor for this class, it initializes everything needed for this class
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +84,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         alarmCard.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
+            Intent intent = new Intent(MainActivity.this, AlarmsActivity.class);
             startActivity(intent);
         });
 
         speakerCard.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, SpeakerActivity.class);
+            Intent intent = new Intent(MainActivity.this, SpeakersActivity.class);
             startActivity(intent);
         });
 

@@ -19,7 +19,7 @@
         android:theme="@style/Theme.Home_Security_System_App"
         tools:targetApi="31">
         <activity
-            android:name=".AlarmActivity"
+            android:name=".AlarmsActivity"
             android:exported="false" />
         <activity
             android:name=".CameraActivity"
@@ -33,7 +33,7 @@
         <activity
             android:name=".MotionDetectorActivity"
             android:exported="false" />
-        <activity android:name=".SpeakerActivity"
+        <activity android:name=".SpeakersActivity"
             android:exported="false"/>
         <activity
             android:name=".MainActivity"

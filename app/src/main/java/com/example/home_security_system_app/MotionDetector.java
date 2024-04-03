@@ -14,32 +14,56 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-// Class that defines the MotionDetector system
+/**
+ * Receiver class that contains the functionality of the Motion Detector system
+ */
 public class MotionDetector{
 
-    // Create variable that are used by this class
+    /**
+     * Variable that holds the display of the actions
+     */
     private final TextView motionDetectorDisplay;
 
-    // Firebase Database reference
-    private final DatabaseReference myDatabase;
-
+    /**
+     * Variable that holds information about the application environment
+     */
     private final Context context;
 
+    /**
+     * Variable that holds a Firebase reference
+     */
+    private final DatabaseReference myDatabase;
 
-    // Check startButton detection
+
+    /**
+     * Variable that holds the state of motion detection
+     * Defaults to false when first loading up
+     */
     private boolean isDetectionStarted = false;
 
+    /**
+     * Variable that hold the state of being setup or not
+     * Defaults to false when first loading up
+     */
     private boolean isSetup = false; // default to false when first loading up
 
-
-    //Parameterized Constructor
+    /**
+     * Parameterized Constructor
+     *
+     * @param textView holds the display element
+     * @param database hold reference to Firebase
+     * @param context hold application environment
+     */
     MotionDetector(TextView textView, DatabaseReference database, Context context){
         this.motionDetectorDisplay = textView;
         this.myDatabase = database;
         this.context = context;
     }
 
-    // Function to simulate setting up motion detectors
+    /**
+     * Function to simulate setting up motion detector
+     * @param view holds the current window view
+     */
     @SuppressLint("SetTextI18n")
     public void setup(View view){
         Button tempSetupButton = view.findViewById(R.id.setupButton);
@@ -60,7 +84,9 @@ public class MotionDetector{
         isSetup = !isSetup;
     }
 
-    // Function to simulate starting the motion detection
+    /**
+     * Function to simulate starting the motion detection
+     */
     @SuppressLint("SetTextI18n")
     public void start(){
 
@@ -81,7 +107,9 @@ public class MotionDetector{
         }
     }
 
-    // Function to simulate stopping the motion detection
+    /**
+     * Function to simulate stopping the motion detection
+     */
     @SuppressLint("SetTextI18n")
     public void stop(){
 
@@ -100,7 +128,9 @@ public class MotionDetector{
         }
     }
 
-
+    /**
+     * Function to listen for and handle motion detection
+     */
     @SuppressLint("SetTextI18n")
     private void motionStateListener()
     {

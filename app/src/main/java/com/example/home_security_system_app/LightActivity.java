@@ -9,13 +9,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-// this class connects the GUI to the command pattern
+/**
+ * Android activity class that handles gui inputs for the application
+ */
 public class LightActivity extends AppCompatActivity {
 
-    // variable used by LightActivity class
+    /**
+     * attribute to hold an instance of the light concrete command
+     */
     private LightOnCommand liCMD;
 
-    // this function handles loading the view
+    /**
+     * This function is a default constructor for this class, it initializes everything needed for this class
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +47,30 @@ public class LightActivity extends AppCompatActivity {
         liCMD = new LightOnCommand(li);
     }
 
-
-    // Handles the setup button click
+    /**
+     * Handles the setup button click
+     * @param view holds the current window view
+     */
     public void setupButton(View view) {
 
         // Run the door locks command execute function
         liCMD.executeSetup(view);
     }
 
-    // Handles the light on  button click
+    /**
+     * Handles the light on button click
+     * @param view holds the current window view
+     */
     public void buttonOnLight(View view){
 
         // Run the door locks command execute function
         liCMD.executeOn();
     }
 
-    // Handles the light off button click
+    /**
+     * Handles the light off button click
+     * @param view holds the current window view
+     */
     public void buttonOffLight(View view) {
 
         // Run the light off execute function

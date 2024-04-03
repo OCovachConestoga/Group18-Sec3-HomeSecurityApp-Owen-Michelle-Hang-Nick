@@ -2,18 +2,28 @@ package com.example.home_security_system_app;
 
 import android.view.View;
 
-// Concrete Command Class that implements the commands for the MotionDetector
+/**
+ * Concrete command class that handles the execution of the motion detector button presses
+ */
 public class MotionDetectorOnCommand implements Command{
 
-    // Create variable that are used by this class
+    /**
+     * Variable that holds on instance of the motion detector receiver
+     */
     MotionDetector md;
 
-    // Parameterized constructor
+    /**
+     * Parameterized constructor
+     * @param MD motion detector instance
+     */
     MotionDetectorOnCommand(MotionDetector MD){
         md = MD;
     }
 
-    // Implementation of setup execution
+    /**
+     * Function to execute setup function of the motion detector
+     * @param view holds the current window view
+     */
     @Override
     public void executeSetup(View view){
 
@@ -21,7 +31,9 @@ public class MotionDetectorOnCommand implements Command{
         md.setup(view);
     }
 
-    // Implementation of on execution
+    /**
+     * Function to execute start function of the motion detector
+     */
     @Override
     public void executeOn(){
 
@@ -29,7 +41,9 @@ public class MotionDetectorOnCommand implements Command{
         md.start();
     }
 
-    // Implementation of off execution
+    /**
+     * Function to execute stop function of the motion detector
+     */
     @Override
     public void executeOff(){
 
